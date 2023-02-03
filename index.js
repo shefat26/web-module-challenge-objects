@@ -3,8 +3,16 @@
 /*When doing these tasks, we recommend using console.log to test the output of your code to make sure it works correctly.*/
 
 ///////////////Menu Items (MVP)///////////////////
-const latte = {name: "Cafe Latte", price: 4, category: "Drinks"};
-const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakfast"};
+const latte = {
+  name: "Cafe Latte", 
+  price: 4, 
+  category: "Drinks"
+};
+const breakfastBurrito = {
+      name: "Breakfast Burrito",
+       price: 16, 
+       category:"Breakfast"
+      };
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1a: Make a function that builds objects🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Add to the function createMenuItems below so it will create objects following the same format found above for latte and breakfastBurrito (name, price, category).  
@@ -16,9 +24,12 @@ The function should:
 */
 
 
-function createMenuItem(/*Your code here*/){
+function createMenuItem(name, price, category){
   /*Your code here*/
+  return {name, price, category};
+
 }
+console.log('task-1a',createMenuItem('tacos', 8, 'Lunch'));
 
 
 
@@ -31,6 +42,18 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+
+
+
+function objFunction(name, price, category){
+
+  return {name, price, category};
+
+
+ }
+ console.log('task-1b', objFunction('pizza', 5, 'Lunch'));
+ console.log('task-1b', objFunction('Waffels', 10, 'Brunch'));
+ console.log('task-1b', objFunction('chocklet milkshake', 2, 'Drinks'));
 
 
 
@@ -50,9 +73,28 @@ Using the burger object below do the following:
 const burger = {
   name: "Burger", 
   price: 18, 
-  category: "Lunch", 
-  
+  category: "Lunch",
+  discount : function(person){
+
+    if(person==='teacher' || person==='student'){
+
+      return this.price-(this.price*0.25);
+
+    }
+    else if(person==='public'){
+
+      return this.price-(this.price*0.10);
+
+    }
+    else{
+
+      return 'No Discount'
+    }
+  }
+
 }
+console.log('task2', burger.discount('student')); 
+
 
 
 
@@ -73,6 +115,7 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
+console.log('task-3',reviews[5].feedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 (not auto-tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -80,6 +123,12 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
+
+
+
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays"
+  console.log('task-4',reviews);
+
 
 
 
@@ -95,10 +144,15 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
-}
+function addReview(arr,name,rating, feedback){
 
+
+  arr.push({name,rating,feedback});
+
+  return arr ;
+  
+}
+console.log(addReview(reviews,'James',4.00,"It's nice place , I would like to visit this restaurant again"));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -112,9 +166,15 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
+function getReviewByIndex(arr, number) {
   /*Your code here*/
-}
+
+ return `${arr[number].name} gave the restaurant a ${arr[number].rating} star review, and their feedback was: ${arr[number].feedback}`
+ 
+
+  }
+ console.log(getReviewByIndex(reviews, 4));
+
 
   
 
@@ -131,10 +191,15 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
-} 
+function getLastReview(array) {
 
+  return `${array[7].name} gave the restaurant a ${array[7].rating} star review, and their feedback was: ${array[7].feedback}`
+ // return `${array[7].name} gave the restaurant a ${array[7].rating} star review and their feedback was:${array[7].feedback}`;
+
+
+  
+}  
+console.log('task-7:',getLastReview(reviews,7));
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
